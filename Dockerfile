@@ -45,6 +45,9 @@ ADD sentry.conf.py /sentry.conf.py
 # config for auto start ssh/mongod
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# start postgres
+RUN service postgresql start
+
 # create db/user for sentry
 USER postgres
 RUN createdb sentry
