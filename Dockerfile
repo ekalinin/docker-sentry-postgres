@@ -20,6 +20,9 @@ ENV LC_ALL en_US.UTF-8
 RUN locale-gen en_US.UTF-8
 #RUN dpkg-reconfigure locales
 
+# editor
+RUN apt-get install -y vim
+
 # install postgres
 RUN apt-get install -y postgresql postgresql-contrib libpq-dev
 
@@ -50,7 +53,8 @@ RUN service postgresql start && \
     su postgres sh -c "createdb sentry" && \
     su postgres sh -c "createuser --no-createdb --encrypted --no-createrole --no-superuser sentry" && \
     su postgres sh -c "psql -c \"ALTER USER sentry WITH PASSWORD 'sentry';\" " && \
-    su postgres sh -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE sentry to sentry;\" "
+    su postgres sh -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE sentry to sentry;\" " && \
+    sentry --config=/sentry.conf.py upgrade --noinput
 
 # ports for ssh/sentry
 EXPOSE 22 9000
