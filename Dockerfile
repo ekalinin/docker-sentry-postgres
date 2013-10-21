@@ -55,4 +55,5 @@ RUN service postgresql start && \
 # ports for ssh/sentry
 EXPOSE 22 9000
 
-CMD ["/usr/bin/supervisord", "-n"]
+# run supervisord in foreground
+CMD ["/usr/bin/supervisord", "--nodaemon"]
