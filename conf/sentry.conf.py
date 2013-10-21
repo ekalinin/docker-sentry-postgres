@@ -1,3 +1,4 @@
+ENTRY_URL_PREFIX = 'http://sentry.example.com'
 
 DATABASES = {
     'default': {
@@ -13,7 +14,7 @@ DATABASES = {
 SENTRY_KEY = '123dkdslyvBUGWq5bcnW9d1MZQ82qmPZB4pskKS3555fdBfuhySw=='
 
 # Set this to false to require authentication
-SENTRY_PUBLIC = False
+SENTRY_PUBLIC = True
 
 # You should configure the absolute URI to Sentry.
 # It will attempt to guess it if you don't
