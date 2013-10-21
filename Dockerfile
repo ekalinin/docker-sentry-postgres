@@ -45,14 +45,12 @@ ADD conf/sentry.conf.py /sentry.conf.py
 # config for auto start ssh/mongod
 ADD conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# start postgres
-RUN service postgresql start
-
-# create db/user for sentry
-RUN su postgres sh -c "createdb sentry"
-RUN su postgres sh -c "createuser --no-createdb --encrypted --no-createrole --no-superuser sentry"
-RUN su postgres sh -c "psql -c \"ALTER USER sentry WITH PASSWORD 'sentry';\" "
-RUN su postgres sh -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE sentry to sentry;\" "
+# start postgres & create db/user for sentry
+RUN service postgresql start && \
+    su postgres sh -c "createdb sentry" && \
+    su postgres sh -c "createuser --no-createdb --encrypted --no-createrole --no-superuser sentry" && \
+    su postgres sh -c "psql -c \"ALTER USER sentry WITH PASSWORD 'sentry';\" " && \
+    su postgres sh -c "psql -c \"GRANT ALL PRIVILEGES ON DATABASE sentry to sentry;\" "
 
 # ports for ssh/sentry
 EXPOSE 22 9000
