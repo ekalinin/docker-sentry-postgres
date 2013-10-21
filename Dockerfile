@@ -40,10 +40,10 @@ RUN pip install psycopg2
 RUN pip install sentry
 
 # config for sentry
-ADD sentry.conf.py /sentry.conf.py
+ADD conf/sentry.conf.py /sentry.conf.py
 
 # config for auto start ssh/mongod
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+ADD conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # start postgres
 RUN service postgresql start
