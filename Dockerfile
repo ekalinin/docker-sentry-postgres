@@ -45,11 +45,9 @@ ADD conf/sentry.conf.py /sentry.conf.py
 # config for auto start ssh/mongod
 ADD conf/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# start postgres
-RUN service postgresql start
-
 # create db/user for sentry
 USER postgres
+RUN service postgresql start
 RUN createdb sentry
 RUN createuser --no-createdb --encrypted --no-createrole --no-superuser sentry
 RUN psql -c "ALTER USER sentry WITH PASSWORD 'sentry';"
