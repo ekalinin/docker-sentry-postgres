@@ -62,7 +62,9 @@ Last login: Tue Oct 22 08:01:19 2013 from example.com
 root@deecd0e16623:~# 
 ````
 
-#### Sentry's seuperuser creation
+#### Sentry's SuperUser creation
+
+You must first connect to the container via ssh and then do the follow:
 
 ````bash
 root@deecd0e16623:~# /usr/local/bin/sentry --config=/sentry.conf.py createsuperuser
