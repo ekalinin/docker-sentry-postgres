@@ -1,4 +1,4 @@
-ENTRY_URL_PREFIX = 'http://sentry.example.com'
+SENTRY_URL_PREFIX = 'http://sentry.example.com'
 
 DATABASES = {
     'default': {
