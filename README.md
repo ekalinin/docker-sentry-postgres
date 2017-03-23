@@ -49,7 +49,7 @@ Set-Cookie:
 sessionid="gAJ9cQFVBV9uZXh0cQJYAQAAAC9zLg:1VYX3a:JimiNbGUTB0pAaurju2Rd2CfEio"; expires=Tue, 05-Nov-2013 08:11:14 GMT; httponly; Max-Age=1209600; Path=/
 ````
 
-### Connect via shh
+### Connect via ssh
 
 ````bash
 # see Dockerfile for root's password
